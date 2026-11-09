@@ -1,0 +1,9 @@
+{
+  "name": "Nocturne Music",
+  "short_name": "Nocturne",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#10150f",
+  "theme_color": "#10150f",
+  "description": "A personal, local-first music player."
+}

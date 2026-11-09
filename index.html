@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#10150f">
+  <meta name="description" content="Nocturne — your personal music space.">
+  <title>Nocturne</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-style="olive">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="Nocturne home"><span class="brand-mark">〰</span><span>NOCTURNE</span></a>
+      <div class="side-label">YOUR SPACE</div>
+      <button class="nav-item active" data-page="home"><span>⌂</span> Home</button>
+      <button class="nav-item" data-page="search"><span>⌕</span> Search</button>
+      <button class="nav-item" data-page="library"><span>▤</span> Your library</button>
+      <div class="side-label playlist-label">COLLECTIONS</div>
+      <button class="nav-item" data-page="liked"><span>♥</span> Liked songs</button>
+      <button class="nav-item" data-page="playlists"><span>＋</span> Playlists</button>
+      <div class="sidebar-bottom">
+        <div class="mini-note"><span class="live-dot"></span> YOUR MUSIC, YOUR SPACE</div>
+        <button class="nav-item" data-page="settings"><span>⚙</span> Settings</button>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div class="mobile-brand"><span class="brand-mark">〰</span> NOCTURNE</div>
+        <div class="top-actions">
+          <span class="greeting" id="greeting">A little space for sound.</span>
+          <button class="icon-btn" id="addMusicTop" title="Add music" aria-label="Add music">＋</button>
+          <button class="avatar" data-page="settings" title="Settings">N</button>
+        </div>
+      </header>
+
+      <section class="page active" id="page-home">
+        <div class="hero">
+          <div class="hero-copy">
+            <div class="eyebrow"><span class="live-dot"></span> YOUR PERSONAL SOUNDSPACE</div>
+            <h1>Find your<br><em>frequency.</em></h1>
+            <p>A calmer place for the music that moves with you.</p>
+            <div class="hero-actions">
+              <button class="primary-btn" id="heroPlay">▶ &nbsp; Play your library</button>
+              <button class="quiet-btn" data-page="library">Explore library <span>↗</span></button>
+            </div>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+            <div class="art-disc"><div class="disc-center">N</div></div>
+            <div class="wave-bars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <span class="art-caption">SIDE A — YOUR SOUND</span>
+          </div>
+        </div>
+
+        <section class="content-section mood-section">
+          <div class="section-heading"><div><div class="eyebrow">TUNE INTO YOURSELF</div><h2>What’s your mood?</h2></div><span class="muted">Optional · You decide</span></div>
+          <div class="mood-grid">
+            <button class="mood-card" data-mood="calm"><span>☁</span><b>Calm</b><small>Slow it down</small></button>
+            <button class="mood-card" data-mood="happy"><span>✳</span><b>Happy</b><small>Lift the energy</small></button>
+            <button class="mood-card" data-mood="focused"><span>◉</span><b>Focused</b><small>Find your flow</small></button>
+            <button class="mood-card" data-mood="melancholy"><span>☾</span><b>Melancholy</b><small>Stay with the feeling</small></button>
+          </div>
+        </section>
+
+        <section class="content-section">
+          <div class="section-heading"><div><div class="eyebrow">MADE FOR YOUR MOMENT</div><h2>Picked for you</h2></div><button class="text-link" data-page="library">View library ↗</button></div>
+          <div id="recommendations" class="track-list"></div>
+        </section>
+        <section class="content-section">
+          <div class="section-heading"><div><div class="eyebrow">YOUR COLLECTION</div><h2>Recently added</h2></div><button class="text-link" data-page="library">See all ↗</button></div>
+          <div id="recentGrid" class="album-grid"></div>
+        </section>
+      </section>
+
+      <section class="page" id="page-search">
+        <div class="page-intro"><div class="eyebrow">DISCOVER</div><h1>Search your<br><em>sound.</em></h1><p>Search and stream independent music from Audius. No music files or API key needed.</p></div>
+        <div class="search-box"><span>⌕</span><input id="searchInput" type="search" placeholder="Search songs, artists, albums online…" autocomplete="off"></div>
+        <div class="section-heading"><h2>Results</h2><span class="muted" id="searchCount">Search the online catalog</span></div>
+        <div id="searchResults" class="track-list"></div><p class="privacy-note" id="searchNote">Search Audius plus Deezer and Apple Music catalogue previews. JioSaavn opens its official site for Indian full-song listening. Preview clips are short; full playback depends on each provider.</p>
+      </section>
+
+      <section class="page" id="page-library">
+        <div class="page-intro row-intro"><div><div class="eyebrow">ALL THE MUSIC YOU KEEP</div><h1>Your <em>library.</em></h1><p>Your saved Audius tracks live here. Streaming requires an internet connection.</p></div><button class="primary-btn" id="addMusicLibrary">＋ Add music</button></div>
+        <div class="library-toolbar"><div class="filter-tabs"><button class="filter-tab active" data-filter="all">All tracks</button><button class="filter-tab" data-filter="liked">Liked</button></div><span class="muted" id="libraryCount">0 tracks</span></div>
+        <div id="libraryTracks" class="track-list"></div>
+        <div class="empty-state" id="emptyLibrary"><div class="empty-icon">♫</div><h3>Your library starts here.</h3><p>Search Audius and tap ♡ to save tracks to your library.</p><button class="primary-btn" id="emptyAdd">＋ Add your music</button></div>
+      </section>
+
+      <section class="page" id="page-liked">
+        <div class="page-intro"><div class="eyebrow">THE ONES THAT STAY</div><h1>Liked <em>songs.</em></h1><p>Your personal shortlist.</p></div>
+        <div id="likedTracks" class="track-list"></div>
+      </section>
+
+      <section class="page" id="page-playlists">
+        <div class="page-intro row-intro"><div><div class="eyebrow">GROUP YOUR MOMENTS</div><h1>Your <em>playlists.</em></h1><p>Make collections for every version of you.</p></div><button class="primary-btn" id="newPlaylist">＋ New playlist</button></div>
+        <div id="playlistGrid" class="album-grid"></div>
+      </section>
+
+      <section class="page" id="page-settings">
+        <div class="page-intro"><div class="eyebrow">MAKE IT YOURS</div><h1>Quietly <em>personal.</em></h1><p>Shape the way Nocturne feels and responds.</p></div>
+        <div class="settings-panel">
+          <div class="settings-heading"><div><h2>Interface styles</h2><p>These change the layout and visual character, not just the colours.</p></div></div>
+          <div class="style-grid" id="styleGrid">
+            <button class="style-card selected" data-style-choice="olive"><span class="style-preview preview-olive"><i></i><i></i><i></i></span><b>Olive Pulse</b><small>Immersive · Mood-led</small></button>
+            <button class="style-card" data-style-choice="minimal"><span class="style-preview preview-minimal"><i></i><i></i><i></i></span><b>Minimalist</b><small>Clean · Spacious</small></button>
+            <button class="style-card" data-style-choice="atlas"><span class="style-preview preview-atlas"><i></i><i></i><i></i></span><b>Atlas</b><small>Editorial · Discovery</small></button>
+            <button class="style-card" data-style-choice="horizon"><span class="style-preview preview-horizon"><i></i><i></i><i></i></span><b>Horizon</b><small>Cinematic · Atmospheric</small></button>
+            <button class="style-card" data-style-choice="studio"><span class="style-preview preview-studio"><i></i><i></i><i></i></span><b>Studio</b><small>Playback · Controls</small></button>
+          </div>
+          <div class="setting-divider"></div>
+          <div class="settings-heading"><div><h2>Online music</h2><p>Audius is the primary catalogue. Basic search and streaming work without an API key or paid subscription.</p></div></div>
+          <div class="setting-row"><div><b>Audius connection</b><p>Uses public read-only endpoints with automatic node fallback. Internet access is required.</p></div><span class="connection-badge">NO KEY NEEDED</span></div>
+          <div class="setting-divider"></div>
+          <div class="setting-row"><div><b>Recommendation balance</b><p>Choose how familiar your suggestions should feel.</p></div><select id="discoveryMode"><option value="familiar">Familiar</option><option value="balanced" selected>Balanced</option><option value="explore">Explore</option></select></div>
+          <div class="setting-row"><div><b>Remember listening activity</b><p>Keep play, replay and skip signals on this device.</p></div><label class="switch"><input type="checkbox" id="historyToggle" checked><span></span></label></div>
+          <div class="setting-row"><div><b>Suggest an interface</b><p>Send a concept note to this device’s local suggestion list.</p></div><button class="outline-btn" id="suggestStyle">Suggest idea</button></div>
+          <div class="setting-row"><div><b>Reset recommendation profile</b><p>Clear listening signals stored by Nocturne.</p></div><button class="outline-btn danger" id="resetTaste">Reset</button></div>
+          <p class="privacy-note">Privacy: music files and listening signals stay in this browser. Clearing browser site data may remove them. This demo does not upload suggestions or music to a server.</p>
+        </div>
+      </section>
+    </main>
+
+    <nav class="mobile-nav">
+      <button class="active" data-page="home">⌂<small>Home</small></button><button data-page="search">⌕<small>Search</small></button><button data-page="library">▤<small>Library</small></button><button data-page="playlists">＋<small>Playlists</small></button><button data-page="settings">⚙<small>Settings</small></button>
+    </nav>
+  </div>
+
+  <footer class="player" id="player">
+    <div class="now-playing">
+      <div class="cover-thumb" id="playerCover">N</div>
+      <div class="now-meta"><b id="playerTitle">Nothing playing</b><small id="playerArtist">Add music to begin</small></div>
+      <button class="like-btn" id="playerLike" aria-label="Like current song">♡</button>
+    </div>
+    <div class="player-center">
+      <div class="player-controls"><button id="shuffleBtn" title="Shuffle">⤨</button><button id="prevBtn" title="Previous">|◀</button><button class="play-btn" id="playBtn" title="Play">▶</button><button id="nextBtn" title="Next">▶|</button><button id="repeatBtn" title="Repeat">↻</button></div>
+      <div class="progress-row"><span id="currentTime">0:00</span><input id="seekBar" type="range" min="0" max="1000" value="0"><span id="duration">0:00</span></div>
+    </div>
+    <div class="player-extra"><span>♫</span><input id="volumeBar" type="range" min="0" max="1" step=".01" value=".8" aria-label="Volume"><button id="queueBtn" title="Queue">☷</button></div>
+  </footer>
+  <input id="filePicker" type="file" accept="audio/*" multiple hidden>
+  <audio id="audio" preload="metadata"></audio>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
